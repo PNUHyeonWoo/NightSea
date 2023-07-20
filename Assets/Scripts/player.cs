@@ -34,5 +34,22 @@ public class player : MonoBehaviour
         else if(GetComponent<Rigidbody2D>().velocity.x < 0)
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
 
+
+        fishing();
+
+    }
+
+    void fishing() 
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !GetComponent<Animator>().GetBool("fishing"))
+        {
+            GetComponent<Animator>().SetBool("fishing", true);
+            GetComponent<AudioSource>().Play();
+        }
+    }
+
+    public void setFishing(int b) 
+    {
+            GetComponent<Animator>().SetBool("fishing", b == 1);
     }
 }
